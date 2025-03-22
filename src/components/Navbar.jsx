@@ -20,7 +20,7 @@ export default function Navbar() {
     setMenuOpen(!menuOpen);
   };
   return (
-    <nav className='sticky top-0 z-10 px-4 py-2 align-center bg-gray-900/90 sm:flex sm:items-center sm:justify-between'>
+    <nav className='sticky top-0 z-10 px-4 py-2 align-center bg-gray-900/70 sm:flex sm:items-center sm:justify-between'>
       <div className='flex justify-between'>
         <h1 className='text-gray-400 font-bold text-3xl italic sm:text-4xl'>My Tinerary</h1>
         <IconMenu menuOpen={menuOpen} handleMenuClick={handleMenuClick} />

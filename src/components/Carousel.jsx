@@ -1,7 +1,18 @@
 import { useState, useEffect } from "react";
 
 export default function Carousel({ places }) {
-  const itemsPerSlide = 4;
+  const [itemsPerSlide, setItemsPerSlide] = useState(4);
+
+  useEffect(() => {
+    const updateItemsPerSlide = () => {
+      setItemsPerSlide(window.innerWidth < 640 ? 1 : 4);
+    };
+  
+    updateItemsPerSlide();
+    window.addEventListener("resize", updateItemsPerSlide);
+    return () => window.removeEventListener("resize", updateItemsPerSlide);
+  }, []);
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -24,25 +35,17 @@ export default function Carousel({ places }) {
   }, [currentIndex, isPaused]);
 
   return (
+    <>
+    <div className="text-center p-5"> 
+      <h2 className="text-white text-3xl">Popular Cities</h2>
+    </div>    
     <div 
-      className="relative flex items-center justify-center bg-black mt-20 mb-20"
+      className="relative flex items-center justify-center bg-black mb-20 w-full h-70 sm:h-130"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      <div className="relative flex items-center justify-center overflow-hidden w-full p-">
-        <div className="hidden sm:w-1/4 sm:grid grid-cols-2 sm:justify-between items-center sm:gap-3 scale-70 translate-x-20 bg-blue-900 rounded-lg p-3 opacity-15">
-          {places
-            .slice(prevIndex * itemsPerSlide, prevIndex * itemsPerSlide + itemsPerSlide)
-            .map((place, index) => (
-              <img
-                key={index}
-                src={place.url}
-                alt={place.name}
-                className="w-full h-60 object-cover rounded-lg"
-              />
-            ))}
-        </div>
-        <div className="w-full sm:w-1/2 gap-3 grid grid-cols-1 relative z-0 bg-blue-900 rounded-lg p-3 sm:grid-cols-2 ">
+      <div className="flex items-center justify-center overflow-hidden p-5">
+        <div className="absolute hidden sm:grid grid-cols-2 sm:gap-1 -translate-y-1/2 top-1/2 left-20 bg-black opacity-40">
           {places
             .slice(currentIndex * itemsPerSlide, currentIndex * itemsPerSlide + itemsPerSlide)
             .map((place, index) => (
@@ -50,11 +53,23 @@ export default function Carousel({ places }) {
                 key={index}
                 src={place.url}
                 alt={place.name}
-                className="w-full h-45 sm:h-80 sm:w-200 object-cover rounded-lg"
+                className="h-12 w-25 object-cover 2xl:h-15 2xl:w-30"
               />
             ))}
         </div>
-        <div className="hidden sm:w-1/4 sm:grid grid-cols-2 sm:justify-between items-center sm:gap-3 scale-70 -translate-x-20 bg-blue-900 rounded-lg p-3 opacity-15">
+        <div className="sm:absolute gap-3 grid grid-cols-1 z-1 bg-black p-1 sm:grid-cols-2">
+          {places
+            .slice(currentIndex * itemsPerSlide, currentIndex * itemsPerSlide + itemsPerSlide)
+            .map((place, index) => (
+              <img
+                key={index}
+                src={place.url}
+                alt={place.name}
+                className="h-60 w-110 object-cover rounded-lg 2xl:w-140"
+              />
+            ))}
+        </div>
+        <div className="absolute hidden sm:grid grid-cols-2 sm:gap-1 -translate-y-1/2 top-1/2 right-20 bg-black opacity-40">
           {places
             .slice(nextIndex * itemsPerSlide, nextIndex * itemsPerSlide + itemsPerSlide)
             .map((place, index) => (
@@ -62,20 +77,20 @@ export default function Carousel({ places }) {
                 key={index}
                 src={place.url}
                 alt={place.name}
-                className="w-full h-60 object-cover rounded-lg"
+                className="h-12 w-25 object-cover 2xl:h-15 2xl:w-30"
               />
             ))}
         </div>
       </div>
       <button
         onClick={prevSlide}
-        className="absolute transform -translate-y-1/2 text-white p-3 rounded-full hover:bg-white sm:hover:bg-blue-900 left-4 top-1/2 bg-gray-300/60 scale-140 sm:bg-blue-50/10"
+        className="absolute transform -translate-y-1/2 text-white p-3 rounded-full hover:bg-white sm:hover:bg-blue-900 left-4 top-1/2 bg-gray-300/60 scale-140 sm:bg-blue-50/10 z-20"
       >
         ◀
       </button>
       <button
         onClick={nextSlide}
-        className="absolute transform -translate-y-1/2 text-white p-3 rounded-full hover:bg-white sm:hover:bg-blue-900 right-4 top-1/2 bg-gray-300/60 scale-140 sm:bg-blue-50/10"
+        className="absolute transform -translate-y-1/2 text-white p-3 rounded-full hover:bg-white sm:hover:bg-blue-900 right-4 top-1/2 bg-gray-300/60 scale-140 sm:bg-blue-50/10 z-20"
       >
         ▶
       </button>
@@ -84,16 +99,19 @@ export default function Carousel({ places }) {
           <button
             key={index}
             onClick={() => setCurrentIndex(index)}
-            className={`w-10 h-2 rounded-full ${
+            className={`w-2 sm:w-10 h-2 rounded-full ${
               index === currentIndex ? "bg-blue-900" : "bg-white"
             }`}
           />
         ))}
       </div>
     </div>
+    </>
   );
 }
 
+/*
 
+*/ 
 
 
