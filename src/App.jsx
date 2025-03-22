@@ -3,6 +3,7 @@ import StandardLayout from './layouts/StandardLayoud'
 import Home from './pages/Home'
 import Cities from './pages/Cities'
 import NotFound from './pages/NotFound'
+import City from './pages/City'
 
 
 const router = createBrowserRouter([
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: "/cities",
         element: <Cities/>
+      },
+      {
+        path: "/city/:id",
+        element: <City />
       }
     ]
   },

@@ -5,7 +5,7 @@ export default function welcome() {
   return (
   <div className='bg-black relative'>
     <div className="w-full h-180 p-0 flex items-center justify-center sm:h-200 sm:px-5">
-      <img className=" inset-0 h-full object-cover" src="../public/viaje_mundo.gif" alt="Welcome" />
+      <img className=" inset-0 h-full object-cover" src="/viaje_mundo.gif" alt="Welcome" />
       <div className="absolute inset-0 bottom-20 flex flex-col items-center justify-center text-center px-4">
         <h1 className="text-white text-5xl font-bold drop-shadow-[3px_3px_1px_rgba(0,0,0,0.9)]">
           My Tinerary

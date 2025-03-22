@@ -9,7 +9,7 @@ export default function SocialNetworks() {
     <div className='flex flex-col gap-2 justify-center md:flex-row md:gap-5'>
       <div className='flex gap-2'>
         <div className='flex h-7 w-7 p-1 bg-white rounded md:h-9 md:w-9'>
-          <img src="../public/facebook.png" alt="fcebook" />
+          <img src="/public/facebook.png" alt="fcebook" />
         </div>
         <div> 
         <p className='text-gray-400 md:hidden'>Facebook</p>
@@ -17,7 +17,7 @@ export default function SocialNetworks() {
       </div>
       <div className='flex gap-2'>
         <div className='flex h-7 w-7 p-1 bg-white rounded md:h-9 md:w-9'>
-          <img src="../public/instagram.png" alt="fcebook" />
+          <img src="/public/instagram.png" alt="fcebook" />
         </div>
         <div> 
         <p className='text-gray-400 md:hidden'>Instagram</p>
@@ -25,7 +25,7 @@ export default function SocialNetworks() {
       </div>
       <div className='flex gap-2'>
         <div className='flex h-7 w-7 p-1 bg-white rounded md:h-9 md:w-9'>
-          <img src="../public/linkedin.png" alt="fcebook" />
+          <img src="/linkedin.png" alt="fcebook" />
         </div>
         <div> 
         <p className='text-gray-400 md:hidden'>Linkedin</p>

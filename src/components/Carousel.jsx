@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 
-export default function Carousel({ places }) {
+export default function Carousel({ data }) {
   const [itemsPerSlide, setItemsPerSlide] = useState(4);
 
   useEffect(() => {
@@ -16,7 +17,7 @@ export default function Carousel({ places }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
-  const totalSlides = Math.ceil(places.length / itemsPerSlide);
+  const totalSlides = Math.ceil(data.length / itemsPerSlide);
   const prevIndex = currentIndex === 0 ? totalSlides - 1 : currentIndex - 1;
   const nextIndex = (currentIndex + 1) % totalSlides;
 
@@ -46,36 +47,43 @@ export default function Carousel({ places }) {
     >
       <div className="flex items-center justify-center overflow-hidden p-5">
         <div className="absolute hidden sm:grid grid-cols-2 sm:gap-1 -translate-y-1/2 top-1/2 left-20 bg-black opacity-40">
-          {places
+          {data
             .slice(currentIndex * itemsPerSlide, currentIndex * itemsPerSlide + itemsPerSlide)
-            .map((place, index) => (
+            .map((place) => (
               <img
-                key={index}
-                src={place.url}
+                key={place._id}
+                src={place.image}
                 alt={place.name}
                 className="h-12 w-25 object-cover 2xl:h-15 2xl:w-30"
               />
             ))}
         </div>
         <div className="sm:absolute gap-3 grid grid-cols-1 z-1 bg-black p-1 sm:grid-cols-2">
-          {places
+          {data
             .slice(currentIndex * itemsPerSlide, currentIndex * itemsPerSlide + itemsPerSlide)
-            .map((place, index) => (
-              <img
-                key={index}
-                src={place.url}
-                alt={place.name}
-                className="h-60 w-110 object-cover rounded-lg 2xl:w-140"
-              />
+            .map((place) => (
+              <NavLink to={`/city/${place._id}}`}>
+                <div className="relative hover:scale-104 hover:transition-transform">              
+                <img
+                  key={place._id}
+                  src={place.image}
+                  alt={place.name}
+                  className="h-60 w-110 object-cover rounded-lg 2xl:w-140"
+                />
+                  <div className="absolute top-3 left-3 text-white drop-shadow-[3px_3px_1px_rgba(0,0,0,0.9)] text-2xl">
+                    <h2 className="font-bold">✈️ {place.name}</h2>
+                  </div>              
+                </div>
+              </NavLink>
             ))}
         </div>
         <div className="absolute hidden sm:grid grid-cols-2 sm:gap-1 -translate-y-1/2 top-1/2 right-20 bg-black opacity-40">
-          {places
+          {data
             .slice(nextIndex * itemsPerSlide, nextIndex * itemsPerSlide + itemsPerSlide)
-            .map((place, index) => (
+            .map((place) => (
               <img
-                key={index}
-                src={place.url}
+                key={place._id}
+                src={place.image}
                 alt={place.name}
                 className="h-12 w-25 object-cover 2xl:h-15 2xl:w-30"
               />
@@ -100,7 +108,7 @@ export default function Carousel({ places }) {
             key={index}
             onClick={() => setCurrentIndex(index)}
             className={`w-2 sm:w-10 h-2 rounded-full ${
-              index === currentIndex ? "bg-blue-900" : "bg-white"
+              index === currentIndex ? "bg-blue-500" : "bg-white"
             }`}
           />
         ))}
@@ -109,9 +117,3 @@ export default function Carousel({ places }) {
     </>
   );
 }
-
-/*
-
-*/ 
-
-

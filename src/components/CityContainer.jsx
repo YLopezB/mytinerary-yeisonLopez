@@ -1,13 +1,14 @@
-import React from 'react'
-import Search from "./Search";
-import CardCity from "./CardCity";
-
+import React, { useState } from 'react';
+import Search from "./SearchComponent";
+import ContainerCards from "./ContainerCards";
 
 export default function CityContainer() {
+  const [searchTerm, setSearchTerm] = useState("");
+
   return (
-    <>
-      <Search/>
-      <CardCity/>
-    </>
-  )
+    <div className='flex flex-col items-center'>
+      <Search setSearchTerm={setSearchTerm} />
+      <ContainerCards searchTerm={searchTerm} />
+    </div>
+  );
 }

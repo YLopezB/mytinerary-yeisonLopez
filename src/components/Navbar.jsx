@@ -11,8 +11,6 @@ const routes = [
   }
 ]
 
-
-
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -36,7 +34,7 @@ export default function Navbar() {
         ))}
         <li className='text-gray-400 p-2 group hover:cursor-pointer hover:bg-gray-500 w-1/2 rounded hover:text-black'>
           <div className='h-9 w-9 rounded-full flex items-center gap-2'>
-            <img className='p-1 object-cover group-hover:bg-gray-800 group-hover:border-1 group-hover:border-gray-400 group-hover:rounded-full' src="../public/Login_gray.png" alt="Login icon" />
+            <img className='p-1 object-cover group-hover:bg-gray-800 group-hover:border-1 group-hover:border-gray-400 group-hover:rounded-full' src="/public/Login_gray.png" alt="Login icon" />
             <p className='sm:hidden'>Login</p>
           </div>
         </li>
