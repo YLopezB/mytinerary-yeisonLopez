@@ -9,7 +9,7 @@ export default function CardCity({ city }) {
           <h2 className="font-bold">📍{city.name}</h2>
           <p className=" ">🗺️{city.country}</p>
         </div>
-        <NavLink to="/city" className="absolute bottom-3 right-3 h-10 w-30 bg-black/75 rounded-lg text-white font-bold hover:scale-110 text-center p-2">✈️ Details</NavLink>
+        <div className="absolute bottom-3 right-3 h-10 w-30 bg-black/75 rounded-lg text-white font-bold hover:scale-110 text-center p-2">✈️ Details</div>
       </div>
     </NavLink>
   );

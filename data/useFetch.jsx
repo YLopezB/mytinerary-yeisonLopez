@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-const url = "http://localhost:8080/api/";
+const url = "http://localhost:8080/api";
 
 export function useFetch(path) {
   const [data, setData] = useState(null);
@@ -14,5 +14,5 @@ export function useFetch(path) {
         .finally(() => setLoading(false));
     }, []);
 
-    return {data, loading, error}
+    return {data, loading}
 }
