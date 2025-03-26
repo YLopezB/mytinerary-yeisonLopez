@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function WelcomeCities() {
   return (
   <div className="relative w-full bg-white h-97 text-center">

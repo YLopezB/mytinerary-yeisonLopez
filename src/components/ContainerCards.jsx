@@ -1,13 +1,7 @@
-import { useFetch } from "../../data/useFetch";
 import CardCity from "./CardCity";
 import NoCity from "./NoCity";
 
-export default function ContainerCards({ searchTerm }) {
-  const { data, loading, error } = useFetch("/cities/allCities");
-
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
-  if (!data) return <div>No data available</div>;
+export default function ContainerCards({ data, searchTerm }) {
 
   const filteredData = data.filter(city =>
     city.name.toLowerCase().startsWith(searchTerm.toLowerCase())
