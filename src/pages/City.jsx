@@ -7,6 +7,6 @@ export default function City() {
   const { data } = useFetch(`/cities/id/${id}`)
 
   return (
-    <Construction/>
+    <Construction data={data}/>
   )
 }
