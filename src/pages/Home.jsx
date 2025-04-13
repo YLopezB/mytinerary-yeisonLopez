@@ -1,16 +1,17 @@
 import React from "react";
 import Welcome from "../components/Welcome";
 import Carousel from "../components/Carousel";
-import Loading from "../components/Loading";
-import { useFetch } from "../../data/useFetch";
+import Loading from "../components/Loading"
+import { useSelector } from "react-redux";
+
 
 export default function Home() {
-  const { data, loading } = useFetch("/cities/allCities");
+  const { loading } = useSelector((state) => state.citiesStore)
 
-  return (
+    return (
     <div>
       <Welcome />
-      {loading ? <Loading/> : <Carousel data={data}/>}
+      {loading ? <Loading/> : <Carousel/>}
     </div>
   );
 }

@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-export default function Carousel({ data }) {
+
+export default function Carousel() {
   const [itemsPerSlide, setItemsPerSlide] = useState(4);
+  const { cities } = useSelector((state) => state.citiesStore)
 
   useEffect(() => {
     const updateItemsPerSlide = () => {
@@ -17,7 +20,7 @@ export default function Carousel({ data }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
-  const totalSlides = Math.ceil(data.length / itemsPerSlide);
+  const totalSlides = Math.ceil(cities.length / itemsPerSlide);
   const prevIndex = currentIndex === 0 ? totalSlides - 1 : currentIndex - 1;
   const nextIndex = (currentIndex + 1) % totalSlides;
 
@@ -30,10 +33,14 @@ export default function Carousel({ data }) {
   };
 
   useEffect(() => {
-    if (isPaused) return;
-    const interval = setInterval(nextSlide, 3000);
+    if (isPaused || totalSlides === 0) return;
+  
+    const interval = setInterval(() => {
+      setCurrentIndex(prev => (prev + 1) % totalSlides);
+    }, 3000);
+  
     return () => clearInterval(interval);
-  }, [currentIndex, isPaused]);
+  }, [isPaused, totalSlides])
 
   return (
     <>
@@ -47,7 +54,7 @@ export default function Carousel({ data }) {
       >
         <div className="flex items-center justify-center overflow-hidden p-5">
           <div className="absolute hidden sm:grid grid-cols-2 sm:gap-1 -translate-y-1/2 top-1/2 left-20 bg-black opacity-40">
-            {data
+            {cities
               .slice(prevIndex * itemsPerSlide, prevIndex * itemsPerSlide + itemsPerSlide)
               .map((place) => (
                 <img
@@ -59,7 +66,7 @@ export default function Carousel({ data }) {
               ))}
           </div>
           <div className="sm:absolute gap-3 grid grid-cols-1 z-1 bg-black p-1 sm:grid-cols-2">
-            {data
+            {cities
               .slice(currentIndex * itemsPerSlide, currentIndex * itemsPerSlide + itemsPerSlide)
               .map((place) => (
                 <NavLink to={`/city/${place._id}`} key={place._id}>
@@ -77,7 +84,7 @@ export default function Carousel({ data }) {
               ))}
           </div>
           <div className="absolute hidden sm:grid grid-cols-2 sm:gap-1 -translate-y-1/2 top-1/2 right-20 bg-black opacity-40">
-            {data
+            {cities
               .slice(nextIndex * itemsPerSlide, nextIndex * itemsPerSlide + itemsPerSlide)
               .map((place) => (
                 <img

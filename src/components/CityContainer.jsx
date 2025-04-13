@@ -1,20 +1,19 @@
-import React, { useState } from 'react';
 import Search from "./SearchComponent";
 import ContainerCards from "./ContainerCards";
 import Loading from "./Loading";
-import { useFetch } from "../../data/useFetch";
+import { useSelector } from "react-redux";
 
 export default function CityContainer() {
-  const { data, loading } = useFetch("/cities/allCities");
-  const [searchTerm, setSearchTerm] = useState("");
-  
+  const {loading} = useSelector((state) => state.citiesStore)
 
   return (
     <>
-    {loading ? <Loading/> : <div className='flex flex-col items-center'>
-        <Search setSearchTerm={setSearchTerm} />
-        <ContainerCards searchTerm={searchTerm} data={data}/>
-      </div> }
+    {loading ? <Loading/> : 
+        <div className='flex flex-col items-center'>
+          <Search/>
+          <ContainerCards/>
+        </div> 
+      }
     </>
   );
 }

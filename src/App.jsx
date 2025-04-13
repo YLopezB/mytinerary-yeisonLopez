@@ -4,6 +4,10 @@ import Home from './pages/Home'
 import Cities from './pages/Cities'
 import NotFound from './pages/NotFound'
 import City from './pages/City'
+import { useDispatch } from 'react-redux'
+import { useEffect } from 'react'
+import { getCities } from './redux/actions/cityActions'
+
 
 
 const router = createBrowserRouter([
@@ -37,6 +41,11 @@ const router = createBrowserRouter([
 
 
 function App() {
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getCities())
+  }, [dispatch])
 
   return (
     <>
