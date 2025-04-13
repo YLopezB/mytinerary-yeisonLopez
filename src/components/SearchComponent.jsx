@@ -1,9 +1,18 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { changeSearch } from '../redux/actions/cityActions';
+import { useEffect } from 'react';
 
-export default function Search({ setSearchTerm }) {
+export default function Search() {
+  const dispatch = useDispatch();
+
   const handleSearchChange = (event) => {
-    setSearchTerm(event.target.value);
+    dispatch(changeSearch(event.target.value));
   };
+
+  useEffect(() => {
+    dispatch(changeSearch(""));
+  }, [dispatch])
 
   return (
     <div className='flex w-95 rounded-lg border-1 border-amber-50 mt-10 mb-10'>

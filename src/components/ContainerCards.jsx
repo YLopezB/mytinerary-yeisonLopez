@@ -1,10 +1,11 @@
+import { useSelector } from "react-redux";
 import CardCity from "./CardCity";
 import NoCity from "./NoCity";
 
-export default function ContainerCards({ data, searchTerm }) {
-
-  const filteredData = data.filter(city =>
-    city.name.toLowerCase().startsWith(searchTerm.toLowerCase())
+export default function ContainerCards() {
+  const {cities, search} = useSelector((state) => state.citiesStore)
+  const filteredData = cities.filter(city =>
+    city.name.toLowerCase().startsWith(search.toLowerCase())
   );
 
   return (
