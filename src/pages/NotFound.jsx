@@ -4,7 +4,7 @@ export default function NotFound() {
   return (
     <div className='bg-gray-700 h-screen flex flex-col items-center '>
     <div className='w-50 h-50 bg-gray-500 border-2 rounded-full p-2 border-gray-400 m-5 sm:w-80 sm:h-80'>
-      <img className='w-full h-full rounded-full object-cover' src="../public/404.jpg" alt="" />
+      <img className='w-full h-full rounded-full object-cover' src="/404.jpg" alt="" />
     </div>
     <div className='text-center'>
       <h1 className='text-white text-3xl md:text-5xl font-bold'>Oops! Page not found.</h1>

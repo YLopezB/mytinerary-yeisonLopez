@@ -1,7 +1,6 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import { changeSearch } from '../redux/actions/cityActions';
 import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { changeSearch } from '../redux/actions/cityActions';
 
 export default function Search() {
   const dispatch = useDispatch();
@@ -23,7 +22,7 @@ export default function Search() {
         onChange={handleSearchChange}
       />
       <div className='bg-blue-500 w-1/7 rounded-r-lg p-2'>
-        <img src="/public/lupa.png" alt="lupa icon" />
+        <img src="/lupa.png" alt="lupa icon" />
       </div>
     </div>
   );
