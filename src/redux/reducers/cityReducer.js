@@ -25,8 +25,7 @@ import { getCities, changeSearch, getCityById } from "../actions/cityActions";
   .addCase(changeSearch, (state, action) => {
     state.search = action.payload;
   })
-
-  builder.addCase(getCityById.fulfilled, (state, action) => {
+  .addCase(getCityById.fulfilled, (state, action) => {
     state.city = action.payload 
     state.loading = false;
   })

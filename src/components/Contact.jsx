@@ -6,15 +6,15 @@ export default function Contact() {
     <div className='flex flex-col gap-2'>
       <p className="text-white font-bold">Contact Us</p>
       <div className="flex gap-2">
-          <img className="h-7 w-7 object-cover p-0.5 bg-white rounded" src="/public/hogar.png" alt="ubication" />
+          <img className="h-7 w-7 object-cover p-0.5 bg-white rounded" src="/hogar.png" alt="ubication" />
           <p className="text-gray-400">123 Street, City</p>
       </div>
       <div className="flex gap-2">
-        <img className="h-7 w-7 object-cover p-0.5 bg-white rounded" src="/public/correo.png" alt="mail" />
+        <img className="h-7 w-7 object-cover p-0.5 bg-white rounded" src="/correo.png" alt="mail" />
         <p className="text-gray-400">contact@mytinerary.com</p>
       </div>
       <div className="flex gap-2">
-        <img className="h-7 w-7 object-cover p-0.5 bg-white rounded" src="/public/whatsapp.png" alt="whatsapp" />
+        <img className="h-7 w-7 object-cover p-0.5 bg-white rounded" src="/whatsapp.png" alt="whatsapp" />
         <p className="text-gray-400">Phone: (123) 456-7890</p>
       </div>
     </div>
